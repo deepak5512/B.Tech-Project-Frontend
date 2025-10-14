@@ -5,7 +5,7 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base: process.env.VITE_BASE_PATH || 'B.Tech-Project-Frontend',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
