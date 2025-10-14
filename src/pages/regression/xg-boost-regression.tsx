@@ -32,7 +32,8 @@ export default function XGBoostRegressionPage() {
 
   const fetchEvaluations = async () => {
     try {
-      const response = await fetch('http://localhost:8000/ml/evaluations/xgboost_regressor');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/ml/evaluations/xgboost_regressor`);
       if (response.ok) {
         const data = await response.json();
         setEvaluations(data.evaluations || []);
@@ -53,14 +54,15 @@ export default function XGBoostRegressionPage() {
     setMessage("");
 
     try {
-      const response = await fetch('http://localhost:8000/sensors/');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/sensors/`);
       if (!response.ok) {
         throw new Error('Failed to fetch training data');
       }
 
       const sensorData = await response.json();
       
-      const trainResponse = await fetch('http://localhost:8000/ml/train', {
+      const trainResponse = await fetch(`${API_URL}/ml/train`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +105,8 @@ export default function XGBoostRegressionPage() {
       const formData = new FormData();
       formData.append('file', uploadedFile);
 
-      const response = await fetch('http://localhost:8000/ml/predict-file/xgboost_regressor', {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/ml/predict-file/xgboost_regressor`, {
         method: 'POST',
         body: formData,
       });

@@ -42,7 +42,8 @@ const AnalysisPage = () => {
   const fetchInitialData = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/sensors/");
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API_URL}/sensors/`);
       if (res.ok) {
         const json = await res.json();
         setData(json || []);

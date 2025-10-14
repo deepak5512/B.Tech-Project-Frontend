@@ -63,7 +63,8 @@ export default function Dashboard() {
   const loadModelsIfNeeded = async () => {
     if (modelsLoaded) return;
     try {
-      const res = await fetch('http://localhost:8000/ml/models');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API_URL}/ml/models`);
       if (!res.ok) return;
       const data = await res.json();
       const trained: string[] = data?.trained_models ?? [];

@@ -23,7 +23,8 @@ export default function DataTablePage() {
     setError(null);
     
     try {
-      const response = await fetch('http://localhost:8000/sensors/');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/sensors/`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

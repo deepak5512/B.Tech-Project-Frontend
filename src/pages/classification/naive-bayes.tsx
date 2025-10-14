@@ -34,7 +34,8 @@ export default function NaiveBayesPage() {
 
   const fetchEvaluations = async () => {
     try {
-      const response = await fetch('http://localhost:8000/ml/evaluations/naive_bayes');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/ml/evaluations/naive_bayes`);
       if (response.ok) {
         const data = await response.json();
         setEvaluations(data.evaluations || []);
@@ -55,14 +56,15 @@ export default function NaiveBayesPage() {
     setMessage("");
 
     try {
-      const response = await fetch('http://localhost:8000/sensors/');
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/sensors/`);
       if (!response.ok) {
         throw new Error('Failed to fetch training data');
       }
 
       const sensorData = await response.json();
       
-      const trainResponse = await fetch('http://localhost:8000/ml/train', {
+      const trainResponse = await fetch(`${API_URL}/ml/train`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +107,8 @@ export default function NaiveBayesPage() {
       const formData = new FormData();
       formData.append('file', uploadedFile);
 
-      const response = await fetch('http://localhost:8000/ml/predict-file/naive_bayes', {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${API_URL}/ml/predict-file/naive_bayes`, {
         method: 'POST',
         body: formData,
       });
