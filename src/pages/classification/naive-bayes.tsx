@@ -25,6 +25,7 @@ interface PredictionResult {
 
 export default function NaiveBayesPage() {
   const [evaluations, setEvaluations] = useState<ModelEvaluation[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoading, setIsLoading] = useState(true);
   const [isTraining, setIsTraining] = useState(false);
   const [isPredicting, setIsPredicting] = useState(false);
