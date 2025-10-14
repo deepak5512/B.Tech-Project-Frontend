@@ -19,7 +19,7 @@ import AnalysisPage from "./pages/home/analysis";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Dashboard />} />
