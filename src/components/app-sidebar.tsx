@@ -1,6 +1,5 @@
 import {
   IconBuildingStore,
-  IconClock,
   IconDatabase,
   IconGridPattern,
   IconHomeFilled,
@@ -34,18 +33,11 @@ const data = {
       url: "/data-table",
       icon: IconDatabase,
     },
-  ],
-  analysis: [
     {
-      title: "Data Analysis-I",
-      url: "/analysis/one",
-      icon: IconClock,
-    },
-    {
-      title: "Data Analysis-II",
-      url: "/analysis/two",
+      title: "Data Analysis",
+      url: "/analysis",
       icon: IconReportAnalytics,
-    },
+    }
   ],
   classification: [
     {
@@ -126,24 +118,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupContent>
             <SidebarMenu>
               {data.main.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Data Analysis</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {data.analysis.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>

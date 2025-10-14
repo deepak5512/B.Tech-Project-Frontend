@@ -15,8 +15,7 @@ import KNNPage from "./pages/classification/knn";
 import NaiveBayesPage from "./pages/classification/naive-bayes";
 import XGBoostClassifierPage from "./pages/classification/xg-boost-classifier";
 import LDAPage from "./pages/classification/lda-classifier";
-import One from "./pages/analysis/one";
-import Two from "./pages/analysis/two";
+import AnalysisPage from "./pages/home/analysis";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -25,9 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />}>
           <Route index element={<Dashboard />} />
           <Route path="/data-table" element={<DataTablePage />} />
-
-          <Route path="/analysis/one" element={<One />} />
-          <Route path="/analysis/two" element={<Two />} />
+          <Route path="/analysis" element={<AnalysisPage />} />
 
           <Route path="/classification/knn" element={<KNNPage />} />
           <Route path="/classification/lda-classifier" element={<LDAPage />} />
